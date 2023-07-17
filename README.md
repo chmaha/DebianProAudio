@@ -1,4 +1,4 @@
-# A Pro Audio Tuning Guide for Ubuntu (and other Ubuntu/Debian-based distros)
+# A Pro Audio Tuning Guide for Debian (and other Debian-based distros)
 
 Following this guide will hopefully allow you to get the best possible performance on Linux for professional audio needs. Even though these steps are well-tested, it is wise to research what each step accomplishes and why (the search engine is your friend :P ).
 
@@ -22,7 +22,7 @@ pactl info
 ```
 Be sure to say 'yes' to removing conflicting packages. Reboot! It would also be wise to install a graph manager like qpwgraph to be able to make connections between apps and devices:
 
-In distros that use Ubuntu 22.10 or Debian 12 repos and higher:
+In distros that use Debian 12 (or Ubuntu 22.10) repos and higher:
 ```shell
 sudo apt install qpwgraph
 ```
