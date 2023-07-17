@@ -2,6 +2,8 @@
 
 Following this guide will hopefully allow you to get the best possible performance on Linux for professional audio needs. Even though these steps are well-tested, it is wise to research what each step accomplishes and why (the search engine is your friend :P ).
 
+For the Arch-based guide see https://github.com/chmaha/ArchProAudio.
+
 ## Fundamentals
 
 To get started after installing Ubuntu, you could try just steps 2, 4 and 6 below. If you need to use windows plugins on Linux also follow step 12 (easy: wine-staging, more advanced but potentially more performance: wine-tkg). Based on your individual pro audio needs, workflows, hardware specifications and more, your mileage may vary. If you are still having audio performance issues, try following the full guide...
