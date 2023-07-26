@@ -10,7 +10,7 @@ To get started after installing Ubuntu, you could try just steps 2, 4 and 6 belo
 
 ### Pipewire?
 
-In short, no, don't do it if you are a pro audio user. In the near future I'll provide some commands to help remove pipewire audio and replace with ALSA + Pulseaudio + JACK. 
+In short, no, don't do it if you are a pro audio user. I don't believe it's ready for primetime. In the near future I'll provide some commands to help remove pipewire audio and replace with ALSA + Pulseaudio + JACK. 
 
 ## Full In-depth Guide
 
