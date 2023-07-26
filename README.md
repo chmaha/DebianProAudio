@@ -48,7 +48,7 @@ cd rtcqs
 
 ### 4. Add user to audio group and configure realtime privileges
 
-I believe that installing jackd2 takes care of the following these days. It is always worth double-checking especially if using pipewire.
+I believe that installing jackd2 takes care of the following these days.
 
 ```shell
 sudo nano /etc/security/limits.d/audio.conf
@@ -130,7 +130,7 @@ sudo make install
 reboot
 ```
 
-### 10. Jack2 + Jack D-Bus (__skip this step if you switched to Pipewire__)
+### 10. Jack2 + Jack D-Bus
 
 ```shell
 sudo apt install qjackctl jackd2
