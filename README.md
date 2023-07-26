@@ -10,86 +10,13 @@ To get started after installing Ubuntu, you could try just steps 2, 4 and 6 belo
 
 ### Pipewire?
 
-Ubuntu includes a way of switching to Pipewire (see https://ubuntuhandbook.org/index.php/2022/04/pipewire-replace-pulseaudio-ubuntu-2204/ & https://pipewire.org/ for more details). You may choose to wait until it ships as default in future releases although it is just as easy to roll things back. To switch to Pipewire run:
-
-```shell
-sudo apt install pipewire-audio-client-libraries libspa-0.2-bluetooth libspa-0.2-jack
-sudo apt install wireplumber pipewire-media-session-
-sudo cp /usr/share/doc/pipewire/examples/alsa.conf.d/99-pipewire-default.conf /etc/alsa/conf.d/
-sudo cp /usr/share/doc/pipewire/examples/ld.so.conf.d/pipewire-jack-*.conf /etc/ld.so.conf.d/
-sudo ldconfig
-sudo apt remove pulseaudio-module-bluetooth
-systemctl --user --now enable wireplumber.service
-pactl info
-```
-Be sure to say 'yes' to removing conflicting packages. Reboot! It would also be wise to install a graph manager like qpwgraph to be able to make connections between apps and devices:
-
-In distros that use Debian 12 (or Ubuntu 22.10) repos and higher:
-```shell
-sudo apt install qpwgraph
-```
-otherwise,
-```shell
-flatpak install flathub org.rncbc.qpwgraph
-```
-For information on setting up flatpak see https://www.flatpak.org/setup/.   
-
-That should give you everything you need to get up and running. I consider Pipewire ready for primetime at this point. For Debian-specific instructions please see For Debian in particular see https://wiki.debian.org/PipeWire.
-
-#### Pipewire configuration
-
-If you want to change the default samplerate, buffer size etc, you need to copy `/usr/share/pipewire/pipewire.conf` over to `/etc/pipewire/` and uncomment a few lines:
-
-![2022-04-19_09-19](https://user-images.githubusercontent.com/90937680/163958025-f25a0f05-bc53-4fca-8f7f-28a94308407b.png)
-
-To temporarily change samplerate/buffer size do not use PIPEWIRE_LATENCY environment variable. Instead, use:
-
-```shell
-pw-metadata -n settings 0 clock.force-rate <samplerate>
-```
-and
-
-```shell
-pw-metadata -n settings 0 clock.force-quantum <buffer-size>
-```
-To return to default values:
-
-```shell
-pw-metadata -n settings 0 clock.force-rate 0
-```
-and
-
-```shell
-pw-metadata -n settings 0 clock.force-quantum 0
-```
-
-See https://gitlab.freedesktop.org/pipewire/pipewire/-/wikis/Config-PipeWire#setting-buffer-size and https://gitlab.freedesktop.org/pipew...ormance-tuning for more details. 
-
-#### Back to ALSA/Pulse?
-
-In the unlikely event you need to switch back:
-
-```shell
-sudo apt remove pipewire-audio-client-libraries libspa-0.2-bluetooth libspa-0.2-jack
-sudo apt install pipewire-media-session wireplumber-
-rm -f ~/.config/systemd/user/pipewire-session-manager.service
-systemctl --user --now enable pipewire-media-session
-```
-
-If the sound still isn't working:
-
-```shell
-systemctl --user --now disable pipewire-pulse.service pipewire-pulse.socket
-systemctl --user --now reenable pulseaudio.service pulseaudio.socket
-```
-
-substituting --user for --global if you originally enabled globally.
+In short, no, don't do it if you are a pro audio user. In the near future I'll provide some commands to help remove pipewire audio and replace with ALSA + Pulseaudio + JACK. 
 
 ## Full In-depth Guide
 
 ### 1. Install a flavor of Ubuntu (or other favorite Ubuntu-based or Debian-based distro)
 
-To make your life easier, install either Ubuntu Studio or AVLinux. Almost all of the following tweaks are taken care of. Otherwise, pick a regular distro such as Ubuntu, MXLinux etc.
+To make your life easier, install either Ubuntu Studio or AVLinux. Almost all of the following tweaks are taken care of. Otherwise, pick a regular distro such as Ubuntu, MXLinux, Debian etc.
 
 ### 2. Install a low-latency kernel (Ubuntu-based)
 
