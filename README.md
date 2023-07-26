@@ -222,7 +222,7 @@ iii. Install Windows VST2, VST3 and CLAP plugins
     
 ### 14. Check volume levels!
 
-Once everything is set up, don't forget to check that volume levels are set correctly. Whether using pipewire-alsa, pipewire-jack, vanilla ALSA or JACK, run
+Once everything is set up, don't forget to check that volume levels are set correctly. Run
 ```
 alsamixer
 ```
