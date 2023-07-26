@@ -133,7 +133,7 @@ reboot
 ### 10. Jack2 + Jack D-Bus
 
 ```shell
-sudo apt install qjackctl jackd2
+sudo apt install qjackctl jackd2 pulseaudio-module-jack
 ```
 Enable Jack D-Bus interface:  
 ![image](https://user-images.githubusercontent.com/79659262/124497122-51218300-ddb2-11eb-8cb8-4bf873e026cd.png)
