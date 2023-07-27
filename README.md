@@ -10,7 +10,16 @@ To get started after installing Ubuntu, you could try just steps 2, 4 and 6 belo
 
 ### Pipewire?
 
-In short, no, don't do it if you are a pro audio user. I don't believe it's ready for primetime. In the near future I'll provide some commands to help remove pipewire audio and replace with ALSA + Pulseaudio + JACK. 
+In short, no, don't do it if you are a pro audio user. I don't believe it's ready for primetime.  The following commands should be safe to run on Debian 12 with any desktop environment to revert to ALSA + Pulseaudio + JACK:
+
+```shell
+sudo apt remove pipewire-alsa pipewire-pulse pipewire-jack
+sudo apt install pulseaudio pulseaudio-module-jack jackd2 pavucontrol
+sudo apt install pipewire-media-session wireplumber-
+```
+You should end up with something like the following if you run `inxi -Aa`:  
+![image](https://github.com/chmaha/DebianProAudio/assets/120390802/bad4ddf4-a5fd-4785-a4c1-2123f0870639)
+
 
 ## Full In-depth Guide
 
