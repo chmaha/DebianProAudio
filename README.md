@@ -138,7 +138,7 @@ sudo apt install qjackctl jackd2 pulseaudio-module-jack
 Enable Jack D-Bus interface:  
 ![image](https://github.com/chmaha/DebianProAudio/assets/120390802/ba263c8f-9d4c-4cd6-9e3a-38939d2ed0b5)
 
-Select your audio interface:
+Select your audio interface:  
 ![image](https://github.com/chmaha/DebianProAudio/assets/120390802/ac98834b-c369-4e82-b372-0fab6abdbabc)
 
 
