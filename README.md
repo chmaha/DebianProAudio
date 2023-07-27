@@ -16,6 +16,7 @@ In short, no, don't do it if you are a pro audio user. I don't believe it's read
 sudo apt remove pipewire-alsa pipewire-pulse pipewire-jack
 sudo apt install pulseaudio pulseaudio-module-jack jackd2 pavucontrol
 sudo apt install pipewire-media-session wireplumber-
+sudo reboot
 ```
 You should end up with something like the following if you run `inxi -Aa`:  
 ![image](https://github.com/chmaha/DebianProAudio/assets/120390802/bad4ddf4-a5fd-4785-a4c1-2123f0870639)
