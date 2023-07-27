@@ -10,7 +10,7 @@ To get started after installing Ubuntu, you could try just steps 2, 4 and 6 belo
 
 ### Pipewire?
 
-In short, no, don't do it if you are a pro audio user. I don't believe it's ready for primetime.  The following commands should be safe to run on Debian 12 with any desktop environment to revert to ALSA + Pulseaudio + JACK:
+In short, no, don't do it if you are a pro audio user. I don't believe it's ready for primetime.  The following commands should be safe to run on Debian 12 with any desktop environment (or any debian-based distro that ships with pipewire audio as the default) to revert to ALSA + Pulseaudio + JACK:
 
 ```shell
 sudo apt remove pipewire-alsa pipewire-pulse pipewire-jack
