@@ -140,7 +140,7 @@ sudo make install
 reboot
 ```
 
-### 10. Jack2 + Jack D-Bus
+### 10. Jack2 + Jack D-Bus (if not already installed)
 
 ```shell
 sudo apt install qjackctl jackd2 pulseaudio-module-jack
