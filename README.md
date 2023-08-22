@@ -61,7 +61,7 @@ Log out/in or reboot...
 
 ### 4. Kernel tweaks
 
-First, check via `uname -a` to see if you see PREEMPT_DYNAMIC (this is true for Debian 12). If so, add "preempt=full",  "threadirqs" and "cpufreq.default_governor=performance" as kernel parameters:
+First, check via `uname -a` to see if you have PREEMPT_DYNAMIC (this is true for Debian 12). If so, add "preempt=full",  "threadirqs" and "cpufreq.default_governor=performance" as kernel parameters:
 
 ```shell
 sudo nano /etc/default/grub
