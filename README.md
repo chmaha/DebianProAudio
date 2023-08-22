@@ -1,6 +1,6 @@
 # A Pro Audio Tuning Guide for Debian (and other Debian-based distros)
 
-Following this guide will allow you to get the best possible performance on Linux for professional audio needs. Even though these steps are well-tested, it is wise to research what each step accomplishes and why (the search engine is your friend :P ). See also https://wiki.archlinux.org/title/Professional_audio. 
+Following this guide will allow you to get the best possible performance on Linux for professional audio needs. Even though these steps are well-tested, it is wise to research what each step accomplishes and why (the search engine is your friend :P ). See also https://wiki.archlinux.org/title/Professional_audio and https://wiki.archlinux.org/title/Professional_audio. 
 
 For the Arch-based guide see https://github.com/chmaha/ArchProAudio.
 
