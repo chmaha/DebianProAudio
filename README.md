@@ -24,11 +24,11 @@ You should end up with something like the following if you run `inxi -Aa`:
 
 ## Full In-depth Guide
 
-### 1. Install a flavor of Ubuntu (or other favorite Ubuntu-based or Debian-based distro)
+### 1. Install Debian 12 (or other favorite Ubuntu-based or Debian-based distro)
 
-To make your life easier, install either Ubuntu Studio or AVLinux. Almost all of the following tweaks are taken care of. Otherwise, pick a regular distro such as Ubuntu, MXLinux, Debian etc.
+To make your life easier, install either Ubuntu Studio or AVLinux. Almost all of the following tweaks are taken care of. Otherwise, pick a regular distro such as Debian, Ubuntu, MXLinux, etc.
 
-### 2. Install a low-latency kernel (Ubuntu-based)
+### 2b. Install a low-latency kernel (Ubuntu-based)
 
 ```shell
 sudo apt update && sudo apt upgrade -y
