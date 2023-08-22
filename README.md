@@ -28,7 +28,7 @@ You should end up with something like the following if you run `inxi -Aa`:
 
 To make your life easier, install either Ubuntu Studio or AVLinux. Almost all of the following tweaks are taken care of. Otherwise, pick a regular distro such as Debian, Ubuntu, MXLinux, etc.
 
-### 2b. Install a low-latency kernel (Ubuntu-based)
+### 2. Install a low-latency kernel (Ubuntu-based)
 
 ```shell
 sudo apt update && sudo apt upgrade -y
