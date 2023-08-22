@@ -6,7 +6,7 @@ For the Arch-based guide see https://github.com/chmaha/ArchProAudio.
 
 ## Fundamentals
 
-To get started after installing Ubuntu, you could try just steps 4, 5 & 6 below. If you need to use windows plugins on Linux also follow step 12 (easy: wine-staging, more advanced but potentially more performance: wine-tkg). Based on your individual pro audio needs, workflows, hardware specifications and more, your mileage may vary. If you are still having audio performance issues, try following the full guide...
+To get started after installing Ubuntu, you could try just steps 3 & 4 below. If you need to use windows plugins on Linux also follow step 12 (easy: wine-staging, more advanced but potentially more performance: wine-tkg). Based on your individual pro audio needs, workflows, hardware specifications and more, your mileage may vary. If you are still having audio performance issues, try following the full guide...
 
 ### Pipewire?
 
@@ -28,27 +28,7 @@ You should end up with something like the following if you run `inxi -Aa`:
 
 To make your life easier, install either Ubuntu Studio or AVLinux. Almost all of the following tweaks are taken care of. Otherwise, pick a regular distro such as Debian, Ubuntu, MXLinux, etc.
 
-### 2. Install a low-latency kernel (Ubuntu-based)
-
-```shell
-sudo apt update && sudo apt upgrade -y
-sudo apt install linux-lowlatency
-reboot
-```
-Or, for even better performance:
-
-#### Liquorix (Debian-based or Ubuntu-based)
-
-```shell
-sudo apt update && sudo apt upgrade -y
-sudo apt install software-properties-common apt-transport-https wget ca-certificates gnupg2 ubuntu-keyring -y
-sudo add-apt-repository ppa:damentz/liquorix -y
-sudo apt update
-sudo apt-get install linux-image-liquorix-amd64 linux-headers-liquorix-amd64 -y
-reboot
-```
-
-### 3. rtcqs (formerly known as realtimeconfigquickscan)
+### 2. rtcqs (formerly known as realtimeconfigquickscan)
     
 ```shell
 git clone https://codeberg.org/rtcqs/rtcqs.git
@@ -56,7 +36,7 @@ cd rtcqs
 ./src/rtcqs/rtcqs.py
 ```
 
-### 4. Add user to audio group and configure realtime privileges
+### 3. Add user to audio group and configure realtime privileges
 
 I believe that installing jackd2 takes care of the following these days.
 
@@ -79,59 +59,34 @@ sudo usermod -a -G audio $USER
 
 Log out/in or reboot...
 
-### 5. Add "threadirqs" as kernel parameter
+### 4. Kernel tweaks
+
+First, check via `uname -a` to see if you see PREEMPT_DYNAMIC (this is true for Debian 12). If so, add "preempt=full",  "threadirqs" and "cpufreq.default_governor=performance" as kernel parameters:
 
 ```shell
 sudo nano /etc/default/grub
 ```
 change 
-`GRUB_CMDLINE_LINUX=""` to `GRUB_CMDLINE_LINUX="threadirqs"`
+`GRUB_CMDLINE_LINUX=""` to `GRUB_CMDLINE_LINUX="preempt=full threadirqs cpufreq.default_governor=performance"`
     
 ```shell
 sudo update-grub
 ```
 
-### 6. Set governor to "performance"
-
-i. Temporary:
-
-```shell
-sudo cpupower frequency-set -g performance
-```
-ii. Permanent:
-
-Add `cpufreq.default_governor=performance` as a kernel parameter:
-
-```shell
-sudo nano /etc/default/grub
-```
-LIne should now read: 
-
-`GRUB_CMDLINE_LINUX="cpufreq.default_governor=performance threadirqs"`
-
-```shell
-sudo update-grub
-```
-or, for kernels < 5.9:
-
-```shell
-sudo nano /etc/default/cpupower # uncomment governor and change to performance
-systemctl enable --now cpupower.service
-systemctl start cpupower.service
-```
+If not, consider installing linux-lowlatency if in Ubuntu or Liquorix via instructions at https://liquorix.net/ and then just add "threadirqs" and "cpufreq.default_governor=performance" as shown above.
     
-### 7. Swappiness
+### 5. Swappiness
 
 ```shell
 sudo nano /etc/sysctl.d/99-sysctl.conf
 ```
 add "vm.swappiness=10"
     
-###  8. Spectre/Meltdown Mitigations
+### 6. Spectre/Meltdown Mitigations
 
 If you run `rtcqs.py` and it gives you a warning about Spectre/Meltdown Mitigations, you could add `mitigations=off` to GRUB_CMDLINE_LINUX. Warning: disabling these mitigations will make your machine less secure! https://wiki.linuxaudio.org/wiki/system_configuration#disabling_spectre_and_meltdown_mitigations
 
-### 9. Install udev-rtirq
+### 7. Install udev-rtirq
 
 ```shell
 git clone https://github.com/jhernberg/udev-rtirq.git
@@ -140,7 +95,7 @@ sudo make install
 reboot
 ```
 
-### 10. Jack2 + Jack D-Bus (if not already installed)
+### 8. Jack2 + Jack D-Bus (if not already installed)
 
 ```shell
 sudo apt install qjackctl jackd2 pulseaudio-module-jack
@@ -157,7 +112,7 @@ To record system audio (say from a browser), 1) make sure JACK is started, 2) st
 ![image](https://github.com/chmaha/DebianProAudio/assets/120390802/dc5b7d0c-153e-4466-8152-4752e2e214fc)
 
 
-### 11. DAW & Plugins
+### 9. DAW & Plugins
 
 REAPER: 
 http://reaper.fm/download.php 
@@ -183,7 +138,7 @@ https://en.wikipedia.org/wiki/List_of_Linux_audio_software#Digital_audio_worksta
 
 A brilliant resource for Debian- and Ubuntu-based distros is  https://kx.studio/. Add the repo by downloading and installing the [repo](https://launchpad.net/~kxstudio-debian/+archive/kxstudio/+files/kxstudio-repos_11.1.0_all.deb).
 
-### 12. Wine-staging or Wine-tkg
+### 10. Wine-staging or Wine-tkg
 
 Perhaps start with vanilla wine-staging and see how you fare in terms of performance. If your workflows rely heavily on VSTi like Kontakt, you may find better performance with wine-tkg (fsync enabled). 
 
@@ -222,7 +177,7 @@ Either download a wine-tkg build from https://github.com/Frogging-Family/wine-tk
 
 If using wine-tkg, set the WINEFSYNC environment variable to 1 according to https://github.com/robbert-vdh/yabridge#environment-configuration (depends on your display manager and login shell)
        
-### 13. Install yabridge
+### 11. Install yabridge
 
 i. Please follow the instructions at https://github.com/robbert-vdh/yabridge#usage
 
@@ -238,7 +193,7 @@ ii. Configure yabridge according to https://github.com/robbert-vdh/yabridge#read
 
 iii. Install Windows VST2, VST3 and CLAP plugins  
     
-### 14. Check volume levels!
+### 12. Check volume levels!
 
 Once everything is set up, don't forget to check that volume levels are set correctly. Run
 ```
@@ -248,7 +203,7 @@ to check that output is set to 100 (vertical bars) or gain of 0dB (top left of a
 
 ![alsamixer](https://user-images.githubusercontent.com/120390802/209148828-f5654838-eb25-4dd2-9955-4e0e8db99be2.png)
 
-### 15. Other useful tools (all available via the package manager)
+### 13. Other useful tools (all available via the package manager)
 
 **Music Player**: strawberry (can produce bit-perfect playback) <br>
 ![image](https://user-images.githubusercontent.com/120390802/209885065-970b9ee3-f4ae-48c2-a0d5-a6f52204e682.png) <br>
