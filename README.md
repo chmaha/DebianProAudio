@@ -73,7 +73,7 @@ change
 sudo update-grub
 ```
 
-If no PREEMPT_DYNAMIC due to an older kernel version, for better performance consider installing linux-lowlatency if on Ubuntu or Liquorix if on Debian via instructions at https://liquorix.net/ and then just add the "threadirqs" and "cpufreq.default_governor=performance" kernel parameters as shown above.
+If no PREEMPT_DYNAMIC due to an older kernel version, for better performance consider installing `linux-lowlatency` package if on Ubuntu or Liquorix if on Debian via instructions at https://liquorix.net/ and then just add the "threadirqs" and "cpufreq.default_governor=performance" kernel parameters as shown above.
     
 ### 5. Swappiness
 
