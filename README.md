@@ -57,7 +57,7 @@ sudo groupadd audio
 sudo usermod -a -G audio $USER
 ```
 
-Log out/in or reboot...
+Reboot to see the effects.
 
 ### 4. Kernel tweaks
 
@@ -72,8 +72,9 @@ change
 ```shell
 sudo update-grub
 ```
+Remember to reboot to see the effects.
 
-If no PREEMPT_DYNAMIC due to an older kernel version, for better performance consider installing `linux-lowlatency` package if on Ubuntu or Liquorix if on Debian via instructions at https://liquorix.net/ and then just add the "threadirqs" and "cpufreq.default_governor=performance" kernel parameters as shown above.
+If you don't have PREEMPT_DYNAMIC due to an older kernel version, for better performance consider installing `linux-lowlatency` package if on Ubuntu or Liquorix if on Debian via instructions at https://liquorix.net/ and then just add the "threadirqs" and "cpufreq.default_governor=performance" kernel parameters as shown above.
     
 ### 5. Swappiness
 
