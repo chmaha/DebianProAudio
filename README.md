@@ -89,7 +89,7 @@ add "vm.swappiness=10"
 
 If you run `rtcqs.py` and it gives you a warning about Spectre/Meltdown Mitigations, you could add `mitigations=off` to GRUB_CMDLINE_LINUX. Warning: disabling these mitigations will make your machine less secure! https://wiki.linuxaudio.org/wiki/system_configuration#disabling_spectre_and_meltdown_mitigations
 
-### 7. Install udev-rtirq
+### 7. Install udev-rtirq (ignore if using pipewire and "pro audio" profile?)
 
 ```shell
 git clone https://github.com/jhernberg/udev-rtirq.git
@@ -98,7 +98,7 @@ sudo make install
 reboot
 ```
 
-### 8. Jack2 + Jack D-Bus (if not already installed)
+### 8. Jack2 + Jack D-Bus (ignore if using pipewire)
 
 ```shell
 sudo apt install qjackctl jackd2 pulseaudio-module-jack
