@@ -43,7 +43,7 @@ Server Name: PulseAudio (on PipeWire 1.0.3)
 
 ### 1. Install Debian 12 (or other favorite Ubuntu-based or Debian-based distro)
 
-To make your life easier, install either Ubuntu Studio or AVLinux. Almost all of the following tweaks are taken care of. Otherwise, pick a regular distro such as Debian, Ubuntu, MXLinux, etc.
+To make your life easier, install either [Ubuntu Studio](https://ubuntustudio.org/) or [AVLinux](https://www.bandshed.net/avlinux/) where all of the following tweaks are taken care of. Otherwise, pick a regular distro such as Debian, Ubuntu, MXLinux, etc.
 
 ### 2. rtcqs (formerly known as realtimeconfigquickscan)
 
@@ -58,7 +58,7 @@ cd rtcqs
 I believe that installing jackd2 takes care of the following these days.
 
 ```shell
-sudo nano /etc/security/limits.d/audio.conf
+sudo vi /etc/security/limits.d/audio.conf
 ```
 
 Add the following lines:
@@ -82,7 +82,7 @@ Reboot to see the effects.
 First, check via `uname -a` to see if you have PREEMPT_DYNAMIC (this is true for Debian 12). If so, add "preempt=full", "threadirqs" and "cpufreq.default_governor=performance" as kernel parameters:
 
 ```shell
-sudo nano /etc/default/grub
+sudo vi /etc/default/grub
 ```
 
 change
@@ -99,14 +99,14 @@ If you don't have PREEMPT_DYNAMIC due to an older kernel version, for better per
 ### 5. Swappiness
 
 ```shell
-sudo nano /etc/sysctl.d/99-sysctl.conf
+sudo vi /etc/sysctl.d/99-sysctl.conf
 ```
 
 add "vm.swappiness=10"
 
 ### 6. Spectre/Meltdown Mitigations
 
-If you run `rtcqs.py` and it gives you a warning about Spectre/Meltdown Mitigations, you could add `mitigations=off` to GRUB_CMDLINE_LINUX. Warning: disabling these mitigations will make your machine less secure! https://wiki.linuxaudio.org/wiki/system_configuration#disabling_spectre_and_meltdown_mitigations
+As mentioned [here](https://wiki.linuxaudio.org/wiki/system_configuration#disabling_spectre_and_meltdown_mitigations), if you run `rtcqs.py` and it reports a warning about Spectre/Meltdown Mitigations, you could add `mitigations=off` to GRUB_CMDLINE_LINUX.
 
 ### 7. Install udev-rtirq (ignore if using pipewire and "pro audio" profile?)
 
@@ -135,17 +135,12 @@ To record system audio (say from a browser), 1) make sure JACK is started, 2) st
 
 ### 9. DAW & Plugins
 
-REAPER:
-http://reaper.fm/download.php
+Also be sure to check out a Free Software DAW like Qtractor, Zrythm, LMMS, or Rosegarden
 
-change RT priority to 40 on audio device page?
-
-Also be sure to check out Bitwig Studio, Tracktion Waveform, Qtractor, LMMS, Rosegarden, Zrythm etc...
-https://en.wikipedia.org/wiki/List_of_Linux_audio_software#Digital_audio_workstations_(DAWs)
+See [this page](<https://en.wikipedia.org/wiki/List_of_Linux_audio_software#Digital_audio_workstations_(DAWs)>) for other options.
 
 #### Native plugins
 
-- airwindows-git (http://www.airwindows.com/)
 - lsp-plugins (https://lsp-plug.in/)
 - zam-plugins (http://www.zamaudio.com/?p=976)
 - distrho-ports (https://distrho.sourceforge.io/ports.php)
@@ -153,15 +148,14 @@ https://en.wikipedia.org/wiki/List_of_Linux_audio_software#Digital_audio_worksta
 - ElephantDSP Room Reverb (https://www.elephantdsp.com/)
 - dragonfly-reverb (https://michaelwillis.github.io/dragonfly-reverb/)
 - Aether (https://dougal-s.github.io/Aether/)
-- Bertom Denoiser (https://www.bertomaudio.com/denoiser.html)
 - sfizz / sfizz-git (https://sfz.tools/sfizz/)
 - Chowdhury DSP (https://chowdsp.com/products.html)
 
-A brilliant resource for Debian- and Ubuntu-based distros is https://kx.studio/. Add the repo by downloading and installing the [repo](https://launchpad.net/~kxstudio-debian/+archive/kxstudio/+files/kxstudio-repos_11.1.0_all.deb).
+A brilliant resource for Debian-based distros is https://kx.studio/. Add the repo by downloading and installing the [repo](https://launchpad.net/~kxstudio-debian/+archive/kxstudio/+files/kxstudio-repos_11.1.0_all.deb).
 
 ### 10. Wine-staging or Wine-tkg
 
-Perhaps start with vanilla wine-staging and see how you fare in terms of performance. If your workflows rely heavily on VSTi like Kontakt, you may find better performance with wine-tkg (fsync enabled).
+Perhaps start with vanilla wine-staging and see how you fare in terms of performance. If additional performance tuning is needed, you may want to use wine-tkg (fsync enabled).
 
 #### Wine-staging
 
