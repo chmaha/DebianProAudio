@@ -14,9 +14,9 @@ To get started after installing Debian, you could try just steps 3 & 4 below. If
 
 ### Pipewire?
 
-**December 2023 update:** Now we are up to pipewire v1.1 I feel more confident about recommending pipewire. Indeed, I'm now running it myself for pro audio work. But I built from git and didn't use Bookworm backports which are a royal pain as you have to select each package, manually force the backport version and deal with various potential "broken" packages. I think Debian 13 will be a great time to jump on the pipewire train but if you can follow the pipewire [official build instructions](https://gitlab.freedesktop.org/pipewire/pipewire/-/blob/master/INSTALL.md?ref_type=heads) I think you'll be happy at this point.
+**December 2024 update:** In general, I feel more confident about recommending pipewire using backports (up to v.1.2.5) or building from git ([official build instructions](https://gitlab.freedesktop.org/pipewire/pipewire/-/blob/master/INSTALL.md?ref_type=heads)). I personally avoid backports as I've found them to be a bit of a pain to use. You have to select each package, manually force the backport version and deal with various potential "broken" packages. For ease of setting up, I still think Debian 13 will be a better time to jump on the pipewire train but if you can stomach backports or have the confidence to build from git, go ahead!
 
-**Advice for regular users of Debian 12 and earlier**: In short, no, don't do it if you are a pro audio user. I don't believe those repository package versions are ready for primetime.  The following commands should be safe to run on Debian 12 with any desktop environment (or any debian-based distro that ships with pipewire audio as the default) to revert to ALSA + Pulseaudio + JACK:
+**Advice for less experienced Linux users of Debian 12 and earlier**: In short, no, don't do it if you are a pro audio user. I don't believe those regular repository package versions are ready for primetime.  The following commands should be safe to run on Debian 12 with any desktop environment (or any debian-based distro that ships with pipewire audio as the default) to revert to ALSA + Pulseaudio + JACK:
 
 ```shell
 sudo apt remove pipewire-alsa pipewire-pulse pipewire-jack
