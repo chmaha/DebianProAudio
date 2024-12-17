@@ -131,6 +131,7 @@ Also be sure to check out Bitwig Studio, Tracktion Waveform, Qtractor, LMMS, Ros
 https://en.wikipedia.org/wiki/List_of_Linux_audio_software#Digital_audio_workstations_(DAWs)
 
 #### Native plugins
+- My JSFX plugin collection (https://forum.cockos.com/showthread.php?t=275301)
 - airwindows-git (http://www.airwindows.com/)  
 - lsp-plugins  (https://lsp-plug.in/)
 - zam-plugins  (http://www.zamaudio.com/?p=976)
