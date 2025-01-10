@@ -3,10 +3,9 @@
   <img src="https://github.com/chmaha/DebianProAudio/assets/120390802/e2be6a8e-5462-46d2-ac8d-1b2ebd135ea0">
 </p>
 
+**UPDATE: I'm archiving this guide because I no longer use Debian. Much of my [Arch guide](https://github.com/chmaha/ArchProAudio) is applicable simply by switching out the package manager commands. I also include an introductory note for users of other distros for adding the `preempt=full` kernel parameter and manually setting up realtime privileges.** 
 
 Following this guide will allow you to get the best possible performance on Linux for professional audio needs. Even though these steps are well-tested, it is wise to research what each step accomplishes and why (the search engine is your friend :P ). See also https://wiki.linuxaudio.org/wiki/system_configuration and https://wiki.archlinux.org/title/Professional_audio. 
-
-For the Arch-based guide see https://github.com/chmaha/ArchProAudio.
 
 ## Fundamentals
 
